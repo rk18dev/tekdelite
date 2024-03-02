@@ -1,0 +1,31 @@
+<div class="container p-3 card mt-3">
+    <h4 class="fw-bold d-flex justify-content-between align-items-center"> <!-- Use flexbox utilities for alignment -->
+        <span>Ready to On-Board ({{userDetailsArray.length}})</span> <!-- Text aligned to the left -->
+        <span class="text-end"><button class="btn btn-primary fw-bold " [routerLink]="['/add-employe']" >Add +</button></span> <!-- Text aligned to the right -->
+
+      </h4>
+    <div class="readytoonboard">
+          <table class="table table-striped">
+        <thead class="sticky-top">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">More details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Corrected NgFor syntax -->
+            @for(user of userDetailsArray;track user){
+            <tr scope="row" class="mt-1">
+                <td>{{ user.id }}</td>
+                <td>{{ user.fullName }}</td>
+                <td><button class="btn btn-primary">More >></button></td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>  
+    </div>
+
+</div>

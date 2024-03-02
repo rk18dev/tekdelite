@@ -1,0 +1,75 @@
+<div class="container mt-3 p-5">
+  <div class="card p-4">
+    <h2 class="text-center">On Boarding</h2>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="id" class="form-label">Document No</label>
+          <input type="text" class="form-control" id="documentno" formControlName="docummentno">
+        </div>
+        <div class="col-md-6">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" formControlName="fullName">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" formControlName="dob">
+        </div>
+        <div class="col-md-6">
+          <label for="gender" class="form-label">Gender</label>
+          <select class="form-select" id="gender" formControlName="gender">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="col-md-6">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="tel" class="form-control" id="mobile" formControlName="mobile">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+
+        <div class="col-md-6">
+          <label for="clientname" class="form-label">Client name</label>
+          <input type="text" class="form-control" id="clientname" formControlName="clientname">
+        </div>
+        <div class="col-md-6">
+          <label for="joiningDate" class="form-label">Joining Date</label>
+          <input type="date" class="form-control" id="joiningDate" formControlName="joiningDate">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+
+
+        <div class="col-md-6">
+          <label for="ratePerHour" class="form-label">Rate/Hr</label>
+          <input type="number" class="form-control" id="ratePerHour" formControlName="ratePerHour">
+        </div>
+
+        <div class="col-md-6">
+          <label for="companyFeePerHour" class="form-label">Company fee(%)</label>
+          <input type="number" class="form-control" id="companyFeePerHour" formControlName="companyFeePerHour">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">On Board</button>
+    </form>
+  </div>
+
+
+  <app-onboardusers></app-onboardusers>
+</div>
