@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { OnboardusersComponent } from "../onboardusers/onboardusers.component";
 
 @Component({
@@ -11,8 +11,9 @@ import { OnboardusersComponent } from "../onboardusers/onboardusers.component";
 })
 export class AddonboarduserComponent {
  
+  constructor(private formBuilder: FormBuilder) {
 
-  constructor(private formBuilder: FormBuilder) { }
+   }
 
   ngOnInit(): void {
     let userForm = this.formBuilder.group({
@@ -23,6 +24,8 @@ export class AddonboarduserComponent {
       companyFeePerHour: ['', Validators.required]
     });
   }
+  onSubmit(){
 
+  }
   
 }

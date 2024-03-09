@@ -1,31 +1,49 @@
 <div class="container p-3 card mt-3">
-    <h4 class="fw-bold d-flex justify-content-between align-items-center"> <!-- Use flexbox utilities for alignment -->
-        <span>Ready to On-Board ({{userDetailsArray.length}})</span> <!-- Text aligned to the left -->
-        <span class="text-end"><button class="btn btn-primary fw-bold " [routerLink]="['/add-employe']" >Add +</button></span> <!-- Text aligned to the right -->
+    <h4 class="fw-bold d-flex justify-content-between align-items-center">
+        <span>Registered candidates({{filteredEmployees.length}}) <select class="form-select"
+                [(ngModel)]="selectedFilter" (change)="applychangeFilter()">
+                <option value="">All</option>
+                @for(visastatusis of visastatuslist;track visastatusis){
+                <option [value]="visastatusis">{{visastatusis}}</option>
+                }
+            </select></span>
 
-      </h4>
-    <div class="readytoonboard">
-          <table class="table table-striped">
-        <thead class="sticky-top">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">More details</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Corrected NgFor syntax -->
-            @for(user of userDetailsArray;track user){
-            <tr scope="row" class="mt-1">
-                <td>{{ user.id }}</td>
-                <td>{{ user.fullName }}</td>
-                <td><button class="btn btn-primary">More >></button></td>
-            </tr>
-            }
-
-
-        </tbody>
-    </table>  
+        <span class="text-end"><button class="btn btn-primary fw-bold " [routerLink]="['/add-employe']">Add
+                +</button></span>
+    </h4>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search by document number" [(ngModel)]="filterValue"
+            (input)="applyFilter()">
     </div>
+    <div class="readytoonboard">
+        <table class="table table-striped">
+            <thead class="sticky-top">
+                <tr>
+                    <th>Document No</th>
+                    <th>Full Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Visa Status</th>
+                    <th>More details</th>
+                </tr>
+            </thead>
+            <tbody>
 
+                @for(user of filteredEmployees;track user){
+                <tr scope="row" class="mt-1">
+                    <td>{{ user.documentno }}</td>
+                    <td>{{ user.firstname+" "+user.middlename+" "+user.lastname || "" }}</td>
+                    <td>{{ user.gender }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.mobile }}</td>
+                    <td>{{ user.visastatus }}</td>
+                    <td><span class="text-end"><button class="btn btn-primary  "
+                                [routerLink]="['/user-details', user.documentno]">More
+                                > > </button></span></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

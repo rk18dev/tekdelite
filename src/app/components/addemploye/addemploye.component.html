@@ -1,22 +1,92 @@
 <div class="container mt-3 p-5">
+    @if(formsubmition){
+    <div class="card p-5 w-3 bg-success text-center">
+        <span class="text-light blockquote lead">{{submittedresponse}}</span>
+    </div>
+    }
+
     <div class="card p-4">
-        <h2 class="text-center">Add Employee</h2>
-        <form>
+        <h2 class="text-center">Add Candidate</h2>
+        <form [formGroup]="employfrom" (ngSubmit)="onSubmit()">
+
             <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="id" class="form-label">Document No</label>
-                    <input type="text" class="form-control" id="documentno" formControlName="docummentno">
+
+                <div class="col-md-4">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstname" formControlName="firstname">
+                    @if(employformsubmitted && employfrom.get('firstname')?.errors){
+                    <div class="text-danger">
+                        First name is required
+                    </div>
+                    }
                 </div>
-                <div class="col-md-6">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" formControlName="fullName">
+                <div class="col-md-4">
+                    <label for="middlename" class="form-label">Middle Name</label>
+                    <input type="text" class="form-control" id="middlename" formControlName="middlename">
+                    @if(employformsubmitted && employfrom.get('middlename')?.errors){
+                    <div class="text-danger">
+                        Middle name is required
+                    </div>
+                    }
                 </div>
+                <div class="col-md-4">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" formControlName="lastname">
+                    @if(employformsubmitted && employfrom.get('lastname')?.errors){
+                    <div class="text-danger">
+                        Last name is required
+                    </div>
+                    }
+                </div>
+
+
+
             </div>
+
             <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="documentno" class="form-label">Document No</label>
+                    <input type="text" class="form-control" id="documentno" formControlName="documentno">
+                    @if(employformsubmitted && employfrom.get('documentno')?.errors){
+                    <div class="text-danger">
+                        Document No is required
+                    </div>
+                    }
+                </div>
                 <div class="col-md-6">
                     <label for="dob" class="form-label">Date of Birth</label>
                     <input type="date" class="form-control" id="dob" formControlName="dob">
+                    @if(employformsubmitted && employfrom.get('dob')?.errors){
+                    <div class="text-danger">
+                        Date of Birth is required
+                    </div>
+                    }
                 </div>
+
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                    @if(employformsubmitted && employfrom.get('email')?.errors){
+                    <div class="text-danger">
+                        Email is required
+                    </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input type="tel" class="form-control" id="mobile" formControlName="mobile">
+                    @if(employformsubmitted && employfrom.get('mobile')?.errors){
+                    <div class="text-danger">
+                        Mobile is required
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="gender" class="form-label">Gender</label>
                     <select class="form-select" id="gender" formControlName="gender">
@@ -25,37 +95,32 @@
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
-                </div>
-
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" formControlName="email">
+                    @if(employformsubmitted && employfrom.get('gender')?.errors){
+                    <div class="text-danger">
+                        Gender is required
+                    </div>
+                    }
                 </div>
                 <div class="col-md-6">
-                    <label for="mobile" class="form-label">Mobile</label>
-                    <input type="tel" class="form-control" id="mobile" formControlName="mobile">
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="gender" class="form-label">Visa Status</label>
-                    <select class="form-select" id="gender" formControlName="gender">
-                        <option value="">Select Status</option>
-                        <option value="male">In pettetion</option>
-                        <option value="female">Selected in lottery</option>
-                        <option value="other">Pettetion APproved</option>
-                        <option value="other">Visa APproved</option>
+                    <label for="visastatus" class="form-label">Visa Status</label>
+                    <select class="form-select" id="visastatus" formControlName="visastatus">
+                        @for(visastatusis of visastatuslist;track visastatusis){
+                        <option [value]="visastatusis">{{visastatusis}}</option>
+                        }
                     </select>
+                    @if(employformsubmitted && employfrom.get('visastatus')?.errors){
+                    <div class="text-danger">
+                        Visa status is required
+                    </div>
+                    }
+
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary">Add Employe</button>
+            <button type="submit" class="btn btn-primary">{{isadd ? "Add Candidate":"Update Candidate"}}</button>
         </form>
     </div>
-
-    <app-readytoonboard></app-readytoonboard>
-</div>
+    @if(isadd){
+        <app-readytoonboard></app-readytoonboard>
+    }
+    </div>
+<app-loading-bar></app-loading-bar>
