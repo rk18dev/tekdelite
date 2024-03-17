@@ -1,3 +1,4 @@
+import { SessionService } from "../services/session.service";
 import { Utils } from "../utils/utils";
 
 export class Employee {
@@ -11,6 +12,8 @@ export class Employee {
     public email: string,
     public mobile: string,
     public visastatus: string,
+    public createdby: string|null=null,
+    public updatedby: string="",
     public lotteryyear: number = new Date().getFullYear(),
     public datecreated: string = new Utils().formatDateToString(new Date()),
     public dateupdated: string = new Utils().formatDateToString(new Date())

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from "../login/login.component";
 import { AuthComponent } from "../authcomponent/authcomponent.component";
 
 @Component({
@@ -7,7 +6,7 @@ import { AuthComponent } from "../authcomponent/authcomponent.component";
     standalone: true,
     templateUrl: './usersigning.component.html',
     styleUrl: './usersigning.component.css',
-    imports: [LoginComponent, AuthComponent]
+    imports: [ AuthComponent]
 })
 export class UsersigningComponent {
 

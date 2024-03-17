@@ -9,6 +9,8 @@ import { LoadingBarComponent } from "../loading-bar/loading-bar.component";
 import { EmployedataService } from '../../services/employedata.service';
 import { CandidatedataserviceService } from '../../services/candidatedataservice.service';
 import { Utils } from '../../utils/utils';
+import { SessionService } from '../../services/session.service';
+import { AuthService } from '../../services/authservice.service';
 @Component({
     selector: 'app-addemploye',
     standalone: true,
@@ -25,12 +27,14 @@ export class AddemployeComponent implements OnInit, OnChanges {
     employformsubmitted: boolean = false
     submittedresponse: string = this.isadd ? "Data Saved successfully" : "Data updated successfully";
     formsubmition: boolean = false;
-
+    loggedinuser!: string
     constructor(private formBuilder: FormBuilder,
         private usermanagementserrvice: UsermanagementService,
         private loadingService: LoadingService,
         private employedataservice: EmployedataService,
-        private candidatedataservice: CandidatedataserviceService) {
+        private candidatedataservice: CandidatedataserviceService,
+        private authservice: AuthService) {
+
 
         console.log("this.employedetailslist");
         console.log(this.isadd);
@@ -65,7 +69,10 @@ export class AddemployeComponent implements OnInit, OnChanges {
         });
     }
     ngOnInit(): void {
-
+        this.authservice.getCurrentUser().subscribe(data => {
+            if (data)
+                this.loggedinuser = data;
+        })
     }
 
     onSubmit() {
@@ -82,19 +89,20 @@ export class AddemployeComponent implements OnInit, OnChanges {
                 formData.gender,
                 formData.email,
                 formData.mobile,
-                formData.visastatus,
+                formData.visastatus
 
 
 
             );
+            employe.datecreated = this.employedetailslist?.datecreated ? this.employedetailslist.datecreated : new Utils().formatDateToString(new Date());
+            employe.createdby = this.employedetailslist?.createdby ? this.employedetailslist.createdby : this.loggedinuser;
 
-            employe.datecreated = this.employedetailslist ? this.employedetailslist.datecreated : new Utils().formatDateToString(new Date());
 
 
             employe.dateupdated = new Utils().formatDateToString(new Date())
+            employe.updatedby = this.loggedinuser;
 
 
-            this.loadingService.show();
             this.usermanagementserrvice.saveUserData(employe).subscribe(() => {
                 this.loadingService.hide();
                 if (this.isadd) {
@@ -114,7 +122,6 @@ export class AddemployeComponent implements OnInit, OnChanges {
                 }, 3000);
 
             }, error => {
-                this.loadingService.hide();
                 console.error("Error saving data:", error);
             })
 

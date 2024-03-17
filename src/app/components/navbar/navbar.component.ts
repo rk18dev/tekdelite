@@ -31,7 +31,13 @@ export class NavbarComponent implements OnInit {
       this.userName = data;
     })
   }
-
+  checkandRedirect() {
+    if (this.userName != null && this.userName != undefined && this.userName.length > 0)
+      this.router.navigate(['/dashboard']);
+    else {
+      this.router.navigate(['/']);
+    }
+  }
 
   logout() {
 
