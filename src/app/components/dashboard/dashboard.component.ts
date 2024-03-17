@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnboardusersComponent } from "../onboardusers/onboardusers.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { ReadytoonboardComponent } from "../readytoonboard/readytoonboard.component";
+import { SessionService } from '../../services/session.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -12,4 +13,7 @@ import { ReadytoonboardComponent } from "../readytoonboard/readytoonboard.compon
 })
 export class DashboardComponent {
 
+    constructor(private sessionservice: SessionService) {
+        this.sessionservice.syncSession();
+    }
 }

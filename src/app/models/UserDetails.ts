@@ -4,6 +4,7 @@ interface UserDetails {
     joiningDate: string;
     ratePerHour: number;
     companyFeePerHour: number;
+    email: string;
     // Add more fields as needed
   }
 

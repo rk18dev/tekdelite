@@ -1,0 +1,105 @@
+.tls-content {
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 2;
+  word-spacing: 4px;
+}
+
+.service-card {
+
+  border-radius: 25px;
+  border: 0.1px solid #999595;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.black-card {
+  background-color: #000;
+  color: #fff;
+  padding: 50px;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+.testimonial-card {
+  background-color: hsl(0, 0%, 100%);
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.testimonial img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.testimonial p {
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.lets-talk-button {
+  background-color: rgb(41, 114, 148)
+}
+
+.footer-card {
+  background-color: #000;
+  color: #fff;
+
+}
+
+
+
+#background-video {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.banner-image-container {
+  max-height: 400px;
+}
+
+.landing-page {
+  background-image: url('https://images01.nicepage.com/c461c07a441a5d220e8feb1a/5e8acbf2bf295e139d5e46ab/5840bafb-40e7-c70d-3a65-44eba87e38c2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.landing-page h1 {
+  color: #fff;
+}
+.landing-page p {
+}
+
+.navbar-background{
+  background-color:#3a3329 !important;
+  height: 80px;
+}
+
+.text-welcome-main{
+  color: cornsilk;
+}

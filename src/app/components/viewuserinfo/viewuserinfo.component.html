@@ -1,0 +1,110 @@
+<div class="container mt-5">
+    @if(!isEdit){
+    <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h2 class="m-0">User Details ({{this.documentno|| "No Data Avaialable" }})</h2>
+            <button class="btn btn-warning" (click)="editEmployee()">Edit</button>
+        </div>
+        @if(this.employedetails!=null){
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Document No:</strong></label>
+                        <p class="form-control-static">{{ employedetails.documentno }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>First Name:</strong></label>
+                        <p class="form-control-static">{{ employedetails.firstname }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Middle Name:</strong></label>
+                        <p class="form-control-static">{{ employedetails.middlename }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Last Name:</strong></label>
+                        <p class="form-control-static">{{ employedetails.lastname }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Date of Birth:</strong></label>
+                        <p class="form-control-static">{{ employedetails.dob }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Gender:</strong></label>
+                        <p class="form-control-static">{{ employedetails.gender }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Email:</strong></label>
+                        <p class="form-control-static">{{ employedetails.email }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Mobile:</strong></label>
+                        <p class="form-control-static">{{ employedetails.mobile }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Visa Status:</strong></label>
+                        <p class="form-control-static">{{ employedetails.visastatus }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Lottery Year:</strong></label>
+                        <p class="form-control-static">{{ employedetails.lotteryyear }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Date Created:</strong></label>
+                        <p class="form-control-static">{{ employedetails.datecreated }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Date Updated:</strong></label>
+                        <p class="form-control-static">{{ employedetails.dateupdated }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Created By:</strong></label>
+                        <p class="form-control-static">{{ employedetails.createdby }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Updated By:</strong></label>
+                        <p class="form-control-static">{{ employedetails.updatedby }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    }
+    @else{
+    <app-addemploye [employedetailslist]="employedetails" [isadd]="isadd"
+        (notifyEdit)="onEditNotify()"></app-addemploye>
+    }
+</div>
